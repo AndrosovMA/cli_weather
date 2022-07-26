@@ -2,10 +2,13 @@
   "name": "cli-weather",
   "version": "1.0.0",
   "description": "CLI for getting weather",
-  "main": "index.js",
-  "bin": "./index.js",
+  "main": "weather.js",
+  "bin": {
+    "weather": "weather.js"
+  },
+  "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "node weather.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -22,5 +25,8 @@
   "bugs": {
     "url": "https://proba.ru",
     "email": "AndrosovMA@bk.ru"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
   }
 }
