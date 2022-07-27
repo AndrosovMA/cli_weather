@@ -1,6 +1,17 @@
 import {getArgs} from './helpers/args.js'
-import {printHelp} from './service/log.service.js'
-import {saveKeyValue} from './service/storege.service.js'
+import {printError, printHelp, printSuccess} from './service/log.service.js';
+import {saveKeyValue} from './service/storage.service.js'
+
+
+const saveToken = async (token) => {
+  try {
+    await saveKeyValue('token', token)
+    printSuccess('Токен сохранен')
+  } catch (e) {
+    printError(e.message)
+  }
+}
+
 
 // get arguments cli - process.argv
 const initCLI = () => {
@@ -13,7 +24,7 @@ const initCLI = () => {
 
   }
   if (args.t) {
-    saveKeyValue('token', args.t);
+    return saveToken(args.t);
   }
 };
 
