@@ -1,6 +1,6 @@
-#!/usr/bin/env node
 import {getArgs} from './helpers/args.js'
 import {printHelp} from './service/log.service.js'
+import {saveKeyValue} from './service/storege.service.js'
 
 // get arguments cli - process.argv
 const initCLI = () => {
@@ -10,10 +10,10 @@ const initCLI = () => {
     printHelp();
   }
   if (args.s) {
-    // сохранить город
+
   }
   if (args.t) {
-    // сохранить токен
+    saveKeyValue('token', args.t);
   }
 };
 
