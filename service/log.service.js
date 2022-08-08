@@ -1,8 +1,5 @@
-// install chalk - для раскрашивания log
-// install dedent-js - для удаления лишних отступов
-
-import chalk from 'chalk';
-import dedent from 'dedent-js'
+import chalk from 'chalk'; //для раскрашивания log
+import dedent from 'dedent-js' //для удаления лишних отступов
 
 const printError = (error) => {
   console.log(`${chalk.bgRed('ERROR')} ${error}`);

@@ -1,4 +1,3 @@
-// API KEY   =    ad4e7a534c717944371586c7ca4e4877
 import {getArgs} from './helpers/args.js'
 import {printError, printHelp, printSuccess} from './service/log.service.js';
 import {saveKeyValue} from './service/storage.service.js'
@@ -18,10 +17,22 @@ const saveToken = async (token) => {
   }
 }
 
+const getForecast = async () => {
+  try {
+    const weather =  await getWeather('moscow');
+  } catch (e) {
+    if (e?.response?.status === 404) {
+      printError('Неверно указан город');
+    } else if (e?.response?.status === 401) {
+        printError('Неверно указан токен');
+    } else {
+      printError(e.message);
+    }
+  }
+}
 
-// get arguments cli - process.argv
 const initCLI = () => {
-  const args = getArgs(process.argv)
+  const args = getArgs(process.argv) //get arguments []
 
   if (args.h) {
     printHelp();
@@ -35,7 +46,7 @@ const initCLI = () => {
     return saveToken(args.t);
   }
 
-  getWeather('moscow')
+  getForecast()
 };
 
 initCLI();
